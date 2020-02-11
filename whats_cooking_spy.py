@@ -90,7 +90,7 @@ from tensorflow.keras.optimizers import Adam
 from tensorflow.keras.losses import sparse_categorical_crossentropy
 #%%
 model=Sequential()
-model.add(Embedding(vocab_size,100,input_length=200))
+model.add(Embedding(vocab_size,100,input_length=X_train1.shape[1]))
 model.add(Dropout(.2))
 
 model.add(Conv1D(64,kernel_size=3,activation='relu',strides=1))
@@ -129,4 +129,4 @@ y_pred=lab.inverse_transform(pred)
 
 test_id = [doc for doc in df_test['id']]
 sub = pd.DataFrame({'id': test_id, 'cuisine': y_pred}, columns=['id', 'cuisine'])
-sub.to_csv('wats_cooking.csv', index=False)
+#sub.to_csv('wats_cooking.csv', index=False)
